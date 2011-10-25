@@ -17,5 +17,5 @@ const char *setup_git_directory(git_repository **repo){
 		die("can not change to project root");
 	}
 	git_repository_open(repo, project_root);
-	return path_prefix(git_repository_path(*repo, GIT_REPO_PATH_WORKDIR), oldcwd);
+	return get_prefix(git_repository_path(*repo, GIT_REPO_PATH_WORKDIR), oldcwd);
 }

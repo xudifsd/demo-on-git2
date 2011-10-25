@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
 	int i;
 	for ( i = 1 ; i < argc ; i++ ) {
-		char *filename = make_path(prefix, argv[i]);
+		char *filename = prefix_path(prefix, argv[i]);
 		if (git_index_add(index, filename, 0)){
 			error("can not add %s to repository", filename);
 		}
