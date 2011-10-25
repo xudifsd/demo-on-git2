@@ -22,8 +22,13 @@ char *path_prefix(const char *a, const char *b){
 
 char *make_path(const char *prefix, const char *basename){
 	static char path[PATH_MAX];
-	int prefix_len = (prefix == NULL)? 0: strlen(prefix);
-	memcpy(path, prefix, prefix_len);
-	strcpy(path + prefix_len, basename);
+	int len = (prefix == NULL)? 0: strlen(prefix);
+	memcpy(path, prefix, len);
+	if (len && (prefix[len] != '/')){
+		path[len] = '/';
+		path[len + 1] = '\0';
+		len++;
+	}
+	strcpy(path + len, basename);
 	return path;
 }

@@ -8,9 +8,6 @@ const char *setup_git_directory(git_repository **repo){
 		perror("getcwd:");
 		die("encounter error when get cwd");
 	}
-	int len = strlen(oldcwd);
-	oldcwd[len] = '/';
-	oldcwd[len + 1] = '\0';
 
 	if (git_repository_discover(project_root, PATH_MAX, oldcwd, 0, NULL)){
 		die("git_repository_discover error");
