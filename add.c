@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <git2.h>
+#include "setup.h"
 #include "usage.h"
 
 static const char * add_usage = "add <filename>";
@@ -11,19 +12,16 @@ int main(int argc, char *argv[]) {
 	}
 	git_repository *repo;
 	git_index *index;
-	char project_root[PATH_MAX];
-	if (git_repository_discover(project_root, PATH_MAX, ".", 0, "/")){
-		die("current not in git project dir");
-	}
-	fprintf(stderr, "debug: project_root is %s\n", project_root);
-	git_repository_open(&repo, project_root);
-	fprintf(stderr, "debug: prefix is %s\n", git_repository_path(repo, GIT_REPO_PATH_WORKDIR));
+
+	const char *prefix;
+	prefix = setup_git_directory(&repo);
+	fprintf(stderr, "debug: prefix is %s\n", prefix);
 
 	git_repository_index(&index, repo);
 
 	int i;
 	for ( i = 1 ; i < argc ; i++ ) {
-		char *filename = argv[i];
+		char *filename = make_path(prefix, argv[i]);
 		if (git_index_add(index, filename, 0)){
 			error("can not add %s to repository", filename);
 		}
