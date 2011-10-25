@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include "usage.h"
 
 static void report(const char *prefix, const char *err, va_list params)
 {

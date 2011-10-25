@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <git2.h>
+#include "usage.h"
 
 static const char * add_usage = "add <filename>";
 
@@ -16,6 +17,7 @@ int main(int argc, char *argv[]) {
 	}
 	fprintf(stderr, "debug: project_root is %s\n", project_root);
 	git_repository_open(&repo, project_root);
+	fprintf(stderr, "debug: prefix is %s\n", git_repository_path(repo, GIT_REPO_PATH_WORKDIR));
 
 	git_repository_index(&index, repo);
 
@@ -32,4 +34,5 @@ int main(int argc, char *argv[]) {
 	}
 	git_index_free(index);
 	git_repository_free(repo);
+	return 0;
 }

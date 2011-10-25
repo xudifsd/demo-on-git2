@@ -15,10 +15,10 @@ install: $(PROS)
 add: add.o $(LIB_OBJS)
 	$(CC) -o add add.o $(LIB_OBJS) $(LIBS)
 
-add.o: add.c
+add.o: add.c usage.h
 	$(CC) $(CFLAGS) -c add.c
 
-usage.o: usage.c
+usage.o: usage.c usage.h
 	$(CC) $(CFLAGS) -c usage.c
 
 clean:
