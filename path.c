@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
+#include "lib.h"
 
 static char *clean_path(char *path){
 	if (!memcmp(path, "./", 2)){

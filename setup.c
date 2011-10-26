@@ -1,4 +1,4 @@
-#include "setup.h"
+#include "lib.h"
 
 const char *setup_git_directory(git_repository **repo){
 	char project_root[PATH_MAX];

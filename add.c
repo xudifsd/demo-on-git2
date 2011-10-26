@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <limits.h>
-#include <git2.h>
-#include "setup.h"
-#include "usage.h"
+#include "lib.h"
 
 static const char * add_usage = "add <filename>";
 
