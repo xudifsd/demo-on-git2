@@ -11,7 +11,6 @@ int main(int argc, char *argv[]) {
 
 	const char *prefix;
 	prefix = setup_git_directory(&repo);
-	fprintf(stderr, "debug: prefix is %s\n", prefix);
 
 	git_repository_index(&index, repo);
 
